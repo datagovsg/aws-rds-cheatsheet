@@ -1,5 +1,7 @@
 # RDS cheatsheet
 
+Referenced from : [https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.MaxConnections](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Limits.html#RDS_Limits.MaxConnections)
+
 ## Maximum Concurrent Connections
 
 ### Aurora
@@ -23,9 +25,9 @@
 | db.r4.16xlarge | 6000            |
 
 
-### MySQL
+### MariaDB and MySQL
 
-RDS MySQL max connections are constrained by the formula:
+RDS MariaDB and MySQL max connections are constrained by the formula:
 
 `Instance Memory / 12582880`
 
@@ -49,3 +51,31 @@ RDS MySQL max connections are constrained by the formula:
 | db.r4.4xlarge  | 16    | 122         | 10411           |
 | db.r4.8xlarge  | 32    | 244         | 20821           |
 | db.r4.16xlarge | 64    | 488         | 41643           |
+
+
+### PostgreSQL
+
+RDS PostgreSQL max connections are constrained by the formula:
+
+`LEAST({DBInstanceClassMemory/9531392}, 5000)`
+
+| Instance       | vCPUs | Memory (GB) | Max Connections |
+| -------------- | ----- | ----------- | --------------- |
+| db.t2.micro    | 1     | 1           | 112             |
+| db.t2.small    | 1     | 2           | 225             |
+| db.t2.medium   | 2     | 4           | 450             |
+| db.t2.large    | 2     | 8           | 901             |
+| db.t2.xlarge   | 4     | 16          | 1802            |
+| db.t2.2xlarge  | 8     | 32          | 3604            |
+| db.t3.micro    | 2     | 1           | 112             |
+| db.t3.small    | 2     | 2           | 225             |
+| db.t3.medium   | 2     | 4           | 450             |
+| db.t3.large    | 2     | 8           | 901             |
+| db.t3.xlarge   | 4     | 16          | 1802            |
+| db.t3.2xlarge  | 8     | 32          | 3604            |
+| db.r4.large    | 2     | 15.25       | 1717            |
+| db.r4.xlarge   | 4     | 30.5        | 3435            |
+| db.r4.2xlarge  | 8     | 61          | 5000            |
+| db.r4.4xlarge  | 16    | 122         | 5000            |
+| db.r4.8xlarge  | 32    | 244         | 5000            |
+| db.r4.16xlarge | 64    | 488         | 5000            |
